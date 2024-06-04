@@ -1,0 +1,13 @@
+.sapFCard .sapFCardHeader .sapFCardHeaderText .sapFCardTitle {
+    font-weight: bold;
+}
+
+.sapMLIB .sapUiIntLCIContent .sapUiIntLCILines .sapUiIntLCITitle{
+    color: #2f86d3;
+    text-decoration: underline;
+}
+
+.sapMLIB.sapMLIBHoverable:hover {
+    background: #005daa0d;
+    transition: 0.5s;
+}

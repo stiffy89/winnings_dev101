@@ -1,0 +1,171 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.material_change",
+		"type": "card",
+		"title": "material change",
+		"subTitle": "material change ui integration card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://switch-classes"
+		}
+	},
+	"sap.card": {
+		"type": "Object",
+        "designtime": "dt/configuration",
+		"extension" : "ext/CardExtension",
+		"configuration" : {
+			"filters": {
+				"searchMaterial": {
+					"type": "Search",
+					"placeholder": "Search Material"
+				}
+			}
+		},
+		"data": {
+			"extension": {
+				"method" : "getData",
+				"args" : [
+					"{filters>/searchMaterial/value}"
+				]
+			},
+			"path" : "/"
+		},
+		"header": {
+			"icon": {
+				"visible" : false
+			},
+			"title": "Change Existing Material"
+		},
+		"content": {
+			"groups": [
+				{
+					"title": "Material Information",
+					"alignment": "Stretch",
+					"items": [
+						{
+							"id": "name",
+							"label": "Name",
+							"type": "Input",
+							"placeholder": "Material Name",
+							"showColon": false,
+							"value": "{name}",
+							"validations": [
+								{
+									"required": true
+								}
+							]
+						},
+						{
+							"id": "description",
+							"label": "Description",
+							"type": "Input",
+							"placeholder": "Material Description",
+							"showColon": false,
+							"value": "{description}",
+							"validations": [
+								{
+									"required": true
+								}
+							]
+						},
+						{
+							"id": "uom",
+							"label": "UOM",
+							"type": "ComboBox",
+							"placeholder": "Select UOM",
+							"value": "{uom}",
+							"validations": [
+								{
+									"required": true
+								}
+							],
+							"item": {
+								"path": "/uomVH",
+								"template": {
+									"key": "{id}",
+									"title": "{text}"
+								}
+							}
+						}
+					]
+				},
+				{
+					"title" : "Material Dimensions",
+					"alignment" : "Stretch",
+					"items" : [
+						{
+							"id": "UOW",
+							"label": "Unit of Weight",
+							"type": "ComboBox",
+							"placeholder": "eg: KG",
+							"value": "{uow}",
+							"item": {
+								"path": "/uowVH",
+								"template": {
+									"key": "{id}",
+									"title": "{text}"
+								}
+							}
+						},
+						{
+							"id": "grossweight",
+							"label": "Gross Weight",
+							"type": "Input",
+							"placeholder": "Gross Weight",
+							"showColon": false,
+							"value": "{grossweight}"
+						},
+						{
+							"id": "netweight",
+							"label": "Net Weight",
+							"type": "Input",
+							"placeholder": "Net Weight",
+							"showColon": false,
+							"value": "{netweight}"
+						},
+						{
+							"id": "volume",
+							"label": "Volume",
+							"type": "Input",
+							"placeholder": "Volume",
+							"showColon": false,
+							"value": "{volume}"
+						}
+					]	
+				}
+			]
+		},
+		"footer": {
+			"actionsStrip": [
+				{
+					"text": "Clear",
+					"buttonType": "Reject",
+					"actions": [
+						{
+							"type": "Change"
+						}
+					]
+				},
+				{
+					"text": "Change",
+					"buttonType": "Accept",
+					"actions": [
+						{
+							"type": "Submit"
+						}
+					]
+				}
+			]
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

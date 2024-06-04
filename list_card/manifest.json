@@ -1,0 +1,107 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "ns.list_card",
+		"type": "card",
+		"title": "Shipped Products 01",
+		"subTitle": "Shipped Products List 01",
+		"applicationVersion": {
+			"version": "1.0.1"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://shipping-status"
+		}
+	},
+	"sap.ui5" : {
+		"resources" : {
+			"css" : [
+				{
+					"uri": "./css/style.css"
+				}
+			]
+		}
+	},
+	"sap.card": {
+		"type": "List",
+        "designtime": "dt/configuration",
+		"configuration" : {
+			"destinations" : {
+				"ES5" : {
+					"name" : "ES5",
+					"defaultUrl" : "sap/opu/odata/iwbep/GWSAMPLE_BASIC/"
+				}
+			},
+			"filters": {
+				"shipper": {
+					"value": "Notebooks",
+					"type": "Select",
+					"label": "Shipping Point",
+					"description": "Filter by Shipping Point",
+					"item": {
+						"path": "/items",
+						"template": {
+							"key": "{key}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"json" : {
+							"items" : [
+								{
+									"title" : "NSW Standard Delivery",
+									"key" : "Notebooks"
+								},
+								{
+									"title" : "NSW Interstage",
+									"key" : "Ink Jet Printers"
+								},
+								{
+									"title" : "NSW Customer Pick-up",
+									"key" : "Graphic Cards"
+								},
+								{
+									"title" : "NSW Returns",
+									"key" : "Software"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"header": {
+			"title": "Top 5 shipped products",
+			"subTitle": "These are the top 5 shipped products from select shipping points",
+			"icon": {
+				"src": "sap-icon://Products"
+			}
+		},
+		"content": {
+			"data": {
+				"request" : {
+					"url" : "{{destinations.ES5}}/sap/opu/odata/iwbep/GWSAMPLE_BASIC/ProductSet",
+					"withCredentials": true,
+					"parameters": {
+						"$filter": "Category eq '{filters>/shipper/value}'",
+						"$top" : "5"
+					}
+				},
+				"path" : "/d/results"
+			},
+			"item": {
+				"title": "{Name}",
+				"description": "{Description}",
+				"info": {
+					"value": "$ {Price}"
+				}
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

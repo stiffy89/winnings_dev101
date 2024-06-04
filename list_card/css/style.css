@@ -1,0 +1,4 @@
+.sapMList .sapMListItems .sapUiIntLCILines .sapUiIntLCITitle,
+.sapMList .sapMListItems .sapUiIntLCILines .sapUiIntLCIInfo {
+    font-weight: bold;
+}

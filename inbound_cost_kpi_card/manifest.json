@@ -1,0 +1,162 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "ns.inbound_cost_kpi_card",
+		"type": "card",
+		"title": "Inbound Cost KPI ",
+		"subTitle": "Inbound Cost KPI Integration Card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://full-stacked-column-chart"
+		}
+	},
+	"sap.card": {
+		"type": "Analytical",
+		"extension" : "ext/FormatterExtension",
+        "designtime": "dt/configuration",
+		"configuration" : {
+			"destinations" : {
+				"JAM" : {
+					"name" : "JAM"
+				}
+			},
+			"filters": {
+				"month": {
+					"value": "1",
+					"type": "Select",
+					"item": {
+						"path": "/items",
+						"template": {
+							"key": "{key}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"json" : {
+							"items" : [
+								{
+									"title" : "This Week",
+									"key" : "1"
+								},
+								{
+									"title" : "This Month",
+									"key" : "2"
+								},
+								{
+									"title" : "This Year",
+									"key" : "3"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"header": {
+			"type": "Numeric",
+			"data": {
+				"extension": {
+					"method" : "getData",
+					"args" : [
+						"{filters>/month/selectedItem/key}"
+					]
+				},
+				"path" : "/header/"
+			},
+			"title": "Inbound Deliveries Cost",
+			"subTitle": "Summation of total cost in deliveries across the multiple sites / delivery points in NSW",
+			"mainIndicator": {
+				"number": "{metric}",
+				"unit": "%",
+				"trend": "{trend}",
+				"state": "{valueColor}"
+			},
+			"details": "Across all delivery points",
+			"sideIndicators": [
+				{
+					"title": "2023",
+					"number": "{lastYear}"
+				},
+				{
+					"title": "2024",
+					"number": "{currentYear}"
+				}
+			]
+		},
+		"content": {
+			"chartType": "column",
+			"chartProperties": {
+				"legendGroup": {
+					"layout": {
+						"position": "bottom"
+					} 
+				},
+				"plotArea": {
+					"dataLabel": {
+						"visible": false,
+						"showTotal": true
+					}
+				},
+				"categoryAxis": {
+					"title": {
+						"visible": false
+					}
+				},
+				"valueAxis": {
+					"title": {
+						"visible": false
+					}
+				},
+				"title": {
+					"text": "Stacked column chart"
+				}
+			},
+			"data": {
+				"extension": {
+					"method" : "getData",
+					"args" : [
+						"{filters>/month/selectedItem/key}"
+					]
+				},
+				"path" : "/chart/"
+			},
+			"dimensions": [
+				{
+					"name": "Location",
+					"value": "{location}"
+				}
+			],
+			"measures": [
+				{
+					"name": "Cost",
+					"value": "{cost}"
+				}
+			],
+			"feeds": [
+				{
+					"type": "Dimension",
+					"uid": "categoryAxis",
+					"values": [
+						"Location"
+					]
+				},
+				{
+					"type": "Measure",
+					"uid": "valueAxis",
+					"values": [
+						"Cost"
+					]
+				}
+			]
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

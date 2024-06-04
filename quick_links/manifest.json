@@ -1,0 +1,64 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.quick_links",
+		"type": "card",
+		"title": "quick links",
+		"subTitle": "quick links ui integration card",
+		"applicationVersion": {
+			"version": "1.1.4"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://list"
+		}
+	},
+	"sap.card": {
+		"type": "List",
+        "designtime": "dt/configuration",
+		"header": {
+			"title": "Quick Links For Fiori Applications"
+		},
+		"content": {
+			"data": {
+				"json": [
+					{
+						"Name": "Create Material",
+						"Description": "MM01",
+						"icon" : "sap-icon://create-form",
+						"semanticObject" : "Material",
+						"action" : "create"
+					},
+					{
+						"Name": "Change Material",
+						"Description": "MM02",
+						"icon" : "sap-icon://edit",
+						"semanticObject" : "Material",
+						"action" : "change"
+					}
+				]
+			},
+			"item": {
+				"title": "{Name}",
+				"description": "{Description}",
+				"actions": [
+					{
+						"type" : "Navigation",
+						"parameters": {
+							"ibnTarget": {
+								"semanticObject": "{semanticObject}",
+								"action": "{action}"
+							}
+						}
+					}
+				]
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

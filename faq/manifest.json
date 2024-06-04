@@ -1,0 +1,73 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.faq",
+		"type": "card",
+		"title": "faq card",
+		"subTitle": "faq integration card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://list"
+		}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"css" : [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		}
+	},
+	"sap.card": {
+		"type": "List",
+        "designtime": "dt/configuration",
+		"header": {
+			"title": "Frequently Asked Questions"
+		},
+		"content": {
+			"data": {
+				"json": [
+					{
+						"Name": "How do we create a new material?",
+						"url": "https://www.winningservices.com.au/contact"
+					},
+					{
+						"Name": "How do we change an existing material?",
+						"url": "https://www.winningservices.com.au/contact"
+					},
+					{
+						"Name": "How do we view incoming shipments?",
+						"url": "https://www.winningservices.com.au/contact"
+					},
+					{
+						"Name": "How do we view outbound deliveries?",
+						"url": "https://www.winningservices.com.au/contact"
+					}
+				]
+			},
+			"item": {
+				"title": "{Name}",
+				"actions": [
+					{
+						"type": "Navigation",
+						"enabled": "{= ${url}}",
+						"parameters": {
+							"url": "{url}",
+							"target" : "_blank"
+						}
+					}
+				]
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

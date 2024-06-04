@@ -1,0 +1,54 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "ns.web_embedded_card",
+		"type": "card",
+		"title": "web embedded card",
+		"subTitle": "web embedded ui integration card",
+		"applicationVersion": {
+			"version": "1.0.4"
+		}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"css" : {
+				"uri" : "css/style.css"
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://list"
+		}
+	},
+	"sap.card": {
+		"type": "WebPage",
+		"configuration": {
+			"parameters": {
+				"minHeight": {
+					"label": "Minimum Content Height",
+					"description": "Minimum height of the content",
+					"type": "string",
+					"value": "25rem"
+				}
+			}
+		},
+		"header": {
+			"title": "Our Sydney Office",
+			"subTitle" : "20A Danks Street, Redfern NSW 2016, Australia",
+			"icon": {
+				"src": "sap-icon://locate-me"
+			}
+		},
+		"content": {
+			"src": "https://www.openstreetmap.org/export/embed.html?bbox=151.201959,-33.904616,151.228909,-33.892612&layer=mapnik",
+			"sandbox": "allow-scripts allow-popups allow-downloads allow-same-origin",
+			"minHeight": "{parameters>/minHeight/value}"
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

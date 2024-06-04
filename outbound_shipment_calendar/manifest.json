@@ -1,0 +1,154 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.outbound_shipment_calendar",
+		"type": "card",
+		"title": "outbound shipment calendar card",
+		"subTitle": "outbound shipment calendar card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://calendar"
+		}
+	},
+    "sap.card": {
+        "type": "Calendar",
+        "designtime": "dt/configuration",
+        "extension" : "ext/CalendarExtension",
+        "configuration" : {
+			"filters": {
+				"location": {
+					"value": "1",
+					"type": "Select",
+					"item": {
+						"path": "/items",
+						"template": {
+							"key": "{key}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"json" : {
+							"items" : [
+								{
+									"title" : "NSW Standard Delivery",
+									"key" : "1"
+								},
+								{
+									"title" : "NSW Interstage",
+									"key" : "2"
+								},
+								{
+									"title" : "NSW Customer Pick-up",
+									"key" : "3"
+								},
+								{
+									"title" : "NSW Returns",
+									"key" : "4"
+								}
+							]
+						}
+					}
+				},
+                "courier": {
+                    "value": "1",
+					"type": "Select",
+					"item": {
+						"path": "/items",
+						"template": {
+							"key": "{key}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"json" : {
+							"items" : [
+								{
+									"title" : "All Couriers",
+									"key" : "1"
+								},
+								{
+									"title" : "AusPost",
+									"key" : "2"
+								},
+								{
+									"title" : "Fedex",
+									"key" : "3"
+								},
+								{
+									"title" : "UPS",
+									"key" : "4"
+								}
+							]
+						}
+					}
+                }
+			}
+		},
+        "data": {
+			"extension": {
+				"method" : "getData",
+				"args" : [
+                    {
+                        "location" : "{filters>/location/selectedItem/key}",
+                        "courier" : "{filters>/courier/selectedItem/key}"
+                    }
+				]
+			},
+			"path" : "/"
+		},
+        
+        "header": {
+            "title": "Outbound Deliveries Calendar"
+        },
+        "content": {
+            "date": "{date}",
+            "maxItems": 10,
+            "maxLegendItems": 3,
+            "noItemsText": "No outbound deliveries found",
+            "item": {
+                "template": {
+                    "startDate": "{StartTime}",
+                    "endDate": "{EndTime}",
+                    "title": "{Courier}",
+                    "text": "{SaleOrderID}",
+                    "type": "{CourierColor}"
+                },
+                "path": "/items"
+            },
+            "specialDate": {
+                "template": {
+                    "startDate": "{start}",
+                    "endDate": "{end}",
+                    "type": "{type}"
+                },
+                "path": "/specialDate"
+            },
+            "legendItem": {
+                "template": {
+                    "category": "{category}",
+                    "text": "{text}",
+                    "type": "{type}"
+                },
+                "path": "/legendItem"
+            },
+            "moreItems": {
+                "actions": [
+                    {
+                        "type": "Navigation",
+                        "enabled": true,
+                        "url": "http://sap.com"
+                    }
+                ]
+            }
+        }
+    },
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

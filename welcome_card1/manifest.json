@@ -1,0 +1,47 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.welcome_card1",
+		"type": "card",
+		"title": "welcome name card",
+		"subTitle": "welcome name ui integration card",
+		"applicationVersion": {
+			"version": "1.0.1"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://technical-object"
+		}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"css" : [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"rootView": {
+			"viewName": "ns.welcome_card1.View",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.38",
+			"libs": {
+				"sap.m": {}
+			}
+		}
+	},
+	"sap.card": {
+		"type": "Component",
+        "designtime": "dt/configuration"
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

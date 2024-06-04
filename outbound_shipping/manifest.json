@@ -1,0 +1,131 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "ns.outbound_shipping",
+		"type": "card",
+		"title": "outbound shipping card",
+		"subTitle": "outbound shipping ui integration card",
+		"applicationVersion": {
+			"version": "1.0.3"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"css" : [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		}
+	},
+	"sap.card": {
+		"type": "Table",
+		"extension" : "ext/FormatterExtension",
+        "designtime": "dt/configuration",
+		"configuration" : {
+			"destinations" : {
+				"ES5" : {
+					"name" : "ES5"
+				}
+			},
+			"filters": {
+				"shipper": {
+					"value": "1",
+					"type": "Select",
+					"label": "Shipping Point",
+					"description": "Filter by Shipping Point",
+					"item": {
+						"path": "/items",
+						"template": {
+							"key": "{key}",
+							"title": "{title}"
+						}
+					},
+					"data": {
+						"json" : {
+							"items" : [
+								{
+									"title" : "NSW Standard Delivery",
+									"key" : "1"
+								},
+								{
+									"title" : "NSW Interstage",
+									"key" : "2"
+								},
+								{
+									"title" : "NSW Customer Pick-up",
+									"key" : "3"
+								},
+								{
+									"title" : "NSW Returns",
+									"key" : "4"
+								}
+							]
+						}
+					}
+				}
+			}
+		},
+		"data": {
+			"extension": {
+				"method" : "getData",
+				"args" : [
+					"{filters>/shipper/selectedItem/key}"
+				]
+			},
+			"path" : "/d/results"
+		},
+		"header": {
+			"title": "Outbound Deliveries",
+			"subTitle": "Today"
+		},
+		"content": {
+			"row": {
+				"columns": [
+					{
+						"title": "Sales Order",
+						"value": "{SalesOrderID}",
+						"identifier": true
+					},
+					{
+						"title": "Delivery Date",
+						"value": "{CreatedAt}"
+					},
+					{
+						"title": "Supplier",
+						"value": "{ToBusinessPartner/BusinessPartnerID}"
+					},
+					{
+						"title": "Supplier Name",
+						"value": "{ToBusinessPartner/CompanyName}"
+					},
+					{
+						"title" : "Line Items",
+						"value": "Display Items",
+						"actions" : [
+							{
+								"type" : "ShowCard",
+								"parameters": {
+									"manifest": "lineitemManifest.json",
+									"data": {
+										"lineItemsData": {
+											"lineitems" : "{ToLineItems/results}",
+											"ordernumber" : "{SalesOrderID}"
+										}
+									}
+								}
+							}
+						]
+					}
+				]
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

@@ -1,0 +1,78 @@
+{
+	"sap.app": {
+		"id": "ns.outbound_shipping_lineitems",
+		"type": "card",
+		"title": "outbound shipping card line items",
+		"subTitle": "outbound shipping card line items ui integration card",
+		"applicationVersion": {
+			"version": "1.0.1"
+		},
+		"shortTitle": "A short title for this Card",
+		"info": "Additional information about this Card"
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+        "fullWidth" : false
+	},
+	"sap.card": {
+		"type": "Table",
+		"header": {
+			"icon": {
+				"src": "sap-icon://detail-view"
+			},
+			"data": {
+				"path": "lineItemsData>/"
+			},
+			"title": "Outbound deliveries line items",
+			"subTitle": "line items for {lineItemsData>ordernumber}"
+		},
+        "content": {
+            "data": {
+				"path": "lineItemsData>/lineitems"
+			},
+			"row": {
+				"columns": [
+					{
+						"title": "Product ID",
+						"value": "{lineItemsData>ProductID}",
+						"identifier": true
+					},
+                    {
+                        "title": "Product Name",
+						"value": "{lineItemsData>ToProduct/Name}"
+                    },
+                    {
+                        "title": "Unit Cost",
+						"value": "{lineItemsData>ToProduct/Price}"
+                    },
+                    {
+						"title": "Quantity",
+						"value": "{lineItemsData>Quantity}"
+					},
+                    {
+						"title": "Net Cost",
+						"value": "{lineItemsData>NetAmount}"
+					},
+                    {
+                        "title": "Tax Amount",
+						"value": "{lineItemsData>TaxAmount}"
+                    }
+				]
+			}
+		},
+		"footer": {
+			"actionsStrip": [
+				{
+					"text": "Close",
+					"buttonType": "Emphasized",
+					"actions": [
+						{
+							"type": "HideCard"
+						}
+					]
+				}
+			]
+		}
+	}
+}

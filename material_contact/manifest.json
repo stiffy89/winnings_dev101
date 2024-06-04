@@ -1,0 +1,70 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "ns.material_contact",
+		"type": "card",
+		"title": "material contact",
+		"subTitle": "material contact ui integration card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://list"
+		}
+	},
+	"sap.card": {
+		"type": "Object",
+        "designtime": "dt/configuration",
+		"data": {
+			"json": {
+				"firstName": "John",
+				"lastName": "Smith",
+				"position": "Warehouse Manager",
+				"phone": "+61 411 111 111",
+				"email": "warehousemanager@email.com",
+				"photo": "images/Contact2.png"
+			}
+		},
+		"header": {
+			"icon": {
+				"src": "{photo}"
+			},
+			"title": "{firstName} {lastName}",
+			"subTitle": "{position}"
+		},
+		"content": {
+			"groups": [
+				{
+					"title": "Contact Details",
+					"items": [
+						{
+							"label": "First Name",
+							"value": "{firstName}"
+						},
+						{
+							"label": "Last Name",
+							"value": "{lastName}"
+						},
+						{
+							"label": "Phone",
+							"value": "{phone}",
+							"type": "phone"
+						},
+						{
+							"label": "Email",
+							"value": "{email}",
+							"type": "email"
+						}
+					]
+				}
+			]
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

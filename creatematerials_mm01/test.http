@@ -1,0 +1,56 @@
+GET http://ds4.dest/sap/opu/odata/sap/API_Product_srv/A_Product('83')?$expand=to_Description&$format=json
+Content-Type: application/json
+X-CSRF-Token: fetch
+
+###
+POST http://ds4.dest/sap/opu/odata/sap/API_Product_srv/A_Product
+Content-Type: application/json
+X-CSRF-Token: vo9T2i5VBe0xSpAgzStM9w==
+
+{
+    "Product": "",
+    "to_Description": {
+        "results":[
+            {
+                "Product" : "",
+                "Language" : "EN",
+                "ProductDescription" : "test"
+            }
+        ]
+    },
+    "to_Plant" : {
+        "results" : [
+            {
+                "Product" : "",
+                "Plant" : "2000",
+                "PurchasingGroup": "",
+                "AvailabilityCheckType" : "SP",
+                "MRPType": "PD",
+                "ProcurementType" : "X",
+                "to_PlantSales" : {
+                    
+                        "Product": "",
+                        "Plant": "2000",
+                        "LoadingGroup": "Z001"
+                    
+                }
+            }
+        ]
+    },
+    "ProductType": "ZUNB",
+    "CreationDate": "\/Date(1715644800000)\/",
+    "CreatedByUser": "900599",
+    "GrossWeight": "0.000",
+    "SourceOfSupply": "",
+    "WeightUnit": "KG",
+    "NetWeight": "0.000",
+    "ProductGroup": "Z3PL01",
+    "BaseUnit": "EA",
+    "Division" : "02",
+    "ItemCategoryGroup": "NORM",
+    "VolumeUnit": "CCM",
+    "SerialNumberProfile": ""
+}
+
+
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV_0002/$metadata

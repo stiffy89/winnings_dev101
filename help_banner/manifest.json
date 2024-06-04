@@ -1,0 +1,50 @@
+{ 
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.help_banner",
+		"type": "card",
+		"title": "help banner",
+		"subTitle": "help banner ui integration card",
+		"applicationVersion": {
+			"version": "1.0.2"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://technical-object"
+		}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"css" : [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"rootView": {
+			"viewName": "ns.help_banner.View",
+			"type": "XML",
+			"async": true,
+			"id": "app"
+		},
+		"dependencies": {
+			"minUI5Version": "1.38",
+			"libs": {
+				"sap.m": {}
+			}
+		}
+	},
+	"sap.card": {
+		"type": "Component",
+        "designtime": "dt/configuration",
+		"header": {
+			"visible" : false
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

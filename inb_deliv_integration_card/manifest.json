@@ -1,0 +1,118 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.inb_deliv_integration_card",
+		"type": "card",
+		"title": "Inbound deliveries",
+		"subTitle": "Collection of Inbound Deliveries",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://table-view"
+		}
+	},
+	"sap.card": {
+		"type": "Table",
+        "designtime": "dt/configuration",
+		"data": {
+			"json": [{
+					"salesOrder": "5000010050",
+					"customerName": "Robert Brown Entertainment",
+					"netAmount": "2K USD",
+					"status": "Delivered",
+					"statusState": "Success"
+				},
+				{
+					"salesOrder": "5000010051",
+					"customerName": "Entertainment Argentinia",
+					"netAmount": "127k USD",
+					"status": "Canceled",
+					"statusState": "Error"
+				},
+				{
+					"salesOrder": "5000010052",
+					"customerName": "Brazil Technologies",
+					"netAmount": "8K USD",
+					"status": "In Progress",
+					"statusState": "Warning"
+				},
+				{
+					"salesOrder": "5000010053",
+					"customerName": "Quimica Madrilenos",
+					"netAmount": "25K USD",
+					"status": "Delivered",
+					"statusState": "Success"
+				},
+				{
+					"salesOrder": "5000010054",
+					"customerName": "Development Para O Governo",
+					"netAmount": "7K USD",
+					"status": "Delivered",
+					"statusState": "Success"
+				},
+				{
+					"salesOrder": "5000010050",
+					"customerName": "Robert Brown Entertainment",
+					"netAmount": "2K USD",
+					"status": "Delivered",
+					"statusState": "Success"
+				},
+				{
+					"salesOrder": "5000010051",
+					"customerName": "Entertainment Argentinia",
+					"netAmount": "127k USD",
+					"status": "Canceled",
+					"statusState": "Error"
+				},
+				{
+					"salesOrder": "5000010052",
+					"customerName": "Brazil Technologies",
+					"netAmount": "8K USD",
+					"status": "In Progress",
+					"statusState": "Warning"
+				},
+				{
+					"salesOrder": "5000010052",
+					"customerName": "Brazil Technologies",
+					"netAmount": "8K USD",
+					"status": "In Progress",
+					"statusState": "Warning"
+				}
+			]
+		},
+		"header": {
+			"title": "Inbound deliveries"
+		},
+		"content": {
+			"row": {
+				"columns": [{
+						"title": "Document ID",
+						"value": "{salesOrder}",
+						"identifier": true
+					},
+					{
+						"title": "Delivery Date",
+						"value": "{customerName}"
+					},
+					{
+						"title": "Delivery Partner",
+						"value": "{netAmount}"
+					},
+					{
+						"title": "Shipping Point",
+						"value": "{status}",
+						"state": "{statusState}"
+					}
+				]
+			}
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

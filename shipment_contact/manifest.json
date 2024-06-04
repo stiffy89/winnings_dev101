@@ -1,0 +1,70 @@
+{
+	"_version": "1.15.0",
+	"sap.app": {
+		"id": "ns.shipment_contact",
+		"type": "card",
+		"title": "shipment contact",
+		"subTitle": "shipment contact ui integration card",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://switch-classes"
+		}
+	},
+	"sap.card": {
+		"type": "Object",
+        "designtime": "dt/configuration",
+		"data": {
+			"json": {
+				"firstName": "Jane",
+				"lastName": "Doe",
+				"position": "Logistics",
+				"phone": "+61 400 000 000",
+				"email": "logistics@email.com",
+				"photo": "images/Contact1.png"
+			}
+		},
+		"header": {
+			"icon": {
+				"src": "{photo}"
+			},
+			"title": "{firstName} {lastName}",
+			"subTitle": "{position}"
+		},
+		"content": {
+			"groups": [
+				{
+					"title": "Contact Details",
+					"items": [
+						{
+							"label": "First Name",
+							"value": "{firstName}"
+						},
+						{
+							"label": "Last Name",
+							"value": "{lastName}"
+						},
+						{
+							"label": "Phone",
+							"value": "{phone}",
+							"type": "phone"
+						},
+						{
+							"label": "Email",
+							"value": "{email}",
+							"type": "email"
+						}
+					]
+				}
+			]
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}

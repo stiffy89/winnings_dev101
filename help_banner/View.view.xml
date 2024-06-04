@@ -1,0 +1,20 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+          width="100%"
+          displayBlock="true"
+          controllerName="ns.help_banner.Card">
+
+    <Image width="100%" src="{images>/helpimage}">
+    </Image>
+    <FlexBox 
+        direction="Column" 
+        alignItems="Start" 
+        class='welcomeFlexBox'
+        justifyContent="Center"
+    >
+        <Text
+            class="welcomeText"
+            text="Help is always around the corner"
+        />
+    </FlexBox>
+</mvc:View>

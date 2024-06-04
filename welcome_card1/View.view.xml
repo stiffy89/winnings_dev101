@@ -1,0 +1,24 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+          xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+          width="100%"
+          displayBlock="true"
+          controllerName="ns.welcome_card1.Card">
+
+    <Image width="100%" src="{images>/welcomeTile}">
+    </Image>
+    <FlexBox 
+        direction="Column" 
+        alignItems="Start" 
+        class='welcomeFlexBox'
+        justifyContent="Center"
+    >
+        <Text
+            class="dateText"
+            text="{images>/date}"
+        />
+        <Text
+            class="welcomeText"
+            text="{images>/welcome}"
+        />
+    </FlexBox>
+</mvc:View>
