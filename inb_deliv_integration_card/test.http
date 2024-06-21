@@ -1,6 +1,7 @@
 GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$filter=DeliveryDate gt datetime'2022-08-01T00:00:00.000'&$format=json
 
-
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$filter=&$format=json
 ###
 GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$filter=DeliveryDate gt datetime'2022-08-01T00:00:00.000'&$expand=to_DeliveryDocumentPartner/to_Address&$format=json
 

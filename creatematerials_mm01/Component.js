@@ -16,6 +16,23 @@ sap.ui.define([
             UIComponent.prototype.init.apply(this, arguments);
         },
 
+		onAfterRendering: function () {
+		/*	let oCard = this.getComponentData().__sapUiIntegration_card;
+			oCard.request({
+				"url" : "{{destinations.DS4}}/sap/opu/odata/sap/API_Product_srv/A_Product",
+				"withCredentials": true
+			}).then(function(oRes){
+				console.log(oRes)
+			}).catch(function(error){
+				console.log(error);
+			})  */
+
+			let oModel = new JSONModel();
+			oModel.loadData("{{destinations.DS4}}/sap/opu/odata/sap/API_Product_srv/A_Product").then(function(res){
+				console.log(res);
+			})
+		}
+
 	
 	});
 

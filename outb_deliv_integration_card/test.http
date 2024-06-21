@@ -1,0 +1,17 @@
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/A_OutbDeliveryHeader?$format=json
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/A_OutbDeliveryHeader('80000013')?$expand=to_DeliveryDocumentPartner/to_Address,to_DeliveryDocumentText,to_DeliveryDocumentItem/to_DeliveryDocumentItemText&$format=json
+
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/A_OutbDeliveryHeader?$expand=to_DeliveryDocumentPartner&$filter=to_DeliveryDocumentPartner/Customer eq 'OTC0112'
+
+
+//we cant do the bottom because of the 1:n of header to partner v2 odata will not allow this query
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/$metadata
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/A_OutbDeliveryPartner?$filter=Customer eq 'OTC1023A'&$format=json
+

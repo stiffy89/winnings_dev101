@@ -1,0 +1,12 @@
+<mvc:View
+	controllerName="winnings.com.inbound_delivery_ic.Deliveries"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page title="Inbound Deliveries" class="sapUiResponsiveContentPadding">
+		<content>
+			<Button
+                press="toDetail"
+            />
+		</content>
+	</Page>
+</mvc:View>

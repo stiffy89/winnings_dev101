@@ -1,10 +1,10 @@
 {
 	"_version": "1.15.0",
 	"sap.app": {
-		"id": "ns.inb_deliv_integration_card",
+		"id": "ns.outb_deliv_integration_card",
 		"type": "card",
-		"title": "Inbound deliveries",
-		"subTitle": "Collection of Inbound Deliveries",
+		"title": "Outbound deliveries",
+		"subTitle": "outbound deliveries integration card",
 		"applicationVersion": {
 			"version": "1.0.0"
 		}
@@ -18,11 +18,6 @@
 	},
 	"sap.ui5" : {
 		"resources" : {
-			"css" : [
-				{
-					"uri": "css/style.css"
-				}
-			],
 			"js" : [
 				{
 					"uri" : "libs/moment.js"
@@ -81,7 +76,7 @@
 			"path" : "/"
 		},
 		"header": {
-			"title": "Inbound deliveries"
+			"title": "Outbound deliveries"
 		},
 		"content": {
 			"row": {
@@ -103,6 +98,11 @@
 						"value": "{ShippingPoint}"
 					}
 				]
+			}
+		},
+		"footer": {
+			"paginator": {
+				"pageSize": 5
 			}
 		}
 	},
