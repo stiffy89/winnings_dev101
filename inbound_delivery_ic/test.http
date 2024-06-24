@@ -1,0 +1,6 @@
+GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$expand=to_DeliveryDocumentPartner/to_Address&$format=json
+Content-Type: application/json
+X-CSRF-Token: fetch
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/ZSD_MASSUPLOAD_SRV/UploadHeaders?$filter=Objectid%20eq%20%27PRODUCT%27

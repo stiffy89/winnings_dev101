@@ -6,7 +6,7 @@
 		"title": "Inbound Deliveries",
 		"subTitle": "Inbound Deliveries Integration Card",
 		"applicationVersion": {
-			"version": "1.0.0"
+			"version": "1.0.9"
 		}
 	},
 	"sap.ui": {
@@ -27,9 +27,15 @@
 			}
 		},
 		"resources" : {
-			"css" : [
+			"js" : [
 				{
-					"uri": "css/style.css"
+					"uri" : "libs/moment.js"
+				},
+				{
+					"uri" : "libs/tabulator.js"
+				},
+				{
+					"uri" : "libs/DemoData.js"
 				}
 			]
 		},
@@ -73,6 +79,9 @@
 	"sap.card": {
 		"type": "Component",
         "designtime": "dt/configuration",
+		"content": {
+			"minHeight": "600px"
+		},
 		"configuration": {
 			"destinations": {
 				"ds4": {

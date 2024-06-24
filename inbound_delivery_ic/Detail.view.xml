@@ -1,16 +1,58 @@
 <mvc:View
 	controllerName="winnings.com.inbound_delivery_ic.Detail"
 	xmlns="sap.m"
+	xmlns:uxap="sap.uxap"
+	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Page 
 		title="Inbound Delivery Details" 
 		class="sapUiResponsiveContentPadding"
 		showNavButton="true"
-		navButtonPress=""
+		navButtonPress="toDeliveryPage"
 	>
 		<content>
-			
+			<VBox>
+				<items>
+					<f:SimpleForm
+						class="card sapUiSmallMarginBottom"
+						layout="ColumnLayout"
+						columnsXL="2"
+						columnsL="2"
+						columnsM="2"
+					>
+						<f:content>
+							<core:Title text="Header" />
+								<Label text="Document ID" />
+								<Text text="Text" />
+								<Label text="Document Date" />
+								<Text text="Text" />
+								<Label text="Shipping Point" />
+								<Text text="Text" />
+							<core:Title text="Partner" />
+								<Label text="Partner Name" />
+								<Text text="Text" />
+								<Label text="Address" />
+								<Text text="Text" />
+						</f:content>
+					</f:SimpleForm>
+
+					<VBox
+						class="card"
+					>
+						<items>
+							<FormattedText
+								htmlText="&lt;p&gt;There are a total of &lt;strong&gt;30 records&lt;/strong&gt; found. Use the table pagination to view all of your results.&lt;/p&gt;"
+							/>
+							<core:HTML
+								content="&lt;div id='itemsResTable' class='customTabulator sapUiSmallMarginTop'&gt;&lt;/&gt;"
+								afterRendering=""
+							/>
+						</items>
+					</VBox>
+				</items>
+			</VBox>
 		</content>
 	</Page>
 </mvc:View>
