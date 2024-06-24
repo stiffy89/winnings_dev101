@@ -5,7 +5,7 @@
 		"title": "Inbound delivery iine items",
 		"subTitle": "Integration card for inbound delivery line items",
 		"applicationVersion": {
-			"version": "1.0.0"
+			"version": "1.0.1"
 		}
 	},
 	"sap.ui": {
@@ -15,6 +15,7 @@
 	},
 	"sap.card": {
 		"type": "Table",
+		"extension" : "ext/FormatterExtension",
 		"header": {
 			"icon": {
 				"src": "sap-icon://detail-view"
@@ -34,7 +35,8 @@
 					{
 						"title": "Material No",
 						"value": "{lineItemsData>Material}",
-						"identifier": true
+						"identifier": true,
+						"width" : "100px"
 					},
 					{
 						"title": "Description",
@@ -42,11 +44,13 @@
 					},
                     {
                         "title": "Quantity",
-						"value": "{lineItemsData>ActualDeliveryQuantity} {lineItemsData>DeliveryQuantityUnit}"
+						"value" : "{path: 'lineItemsData>ActualDeliveryQuantity', formatter: 'extension.formatters.getQuantityFormatter'}",
+						"width" : "150px"
                     },
 					{
                         "title": "Storage Location",
-						"value": "{lineItemsData>StorageLocation}"
+						"value": "{lineItemsData>StorageLocation}",
+						"width" : "150px"
                     }
 				]
 			}

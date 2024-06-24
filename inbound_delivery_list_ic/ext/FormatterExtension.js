@@ -38,8 +38,11 @@ sap.ui.define([
             } else {
                 console.log(sFilterString);
                 return oCard.request({
-                    "url" : "{{destinations.ds4}}/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$filter=" + sFilterString + "&$expand=to_DeliveryDocumentPartner/to_Address&$format=json",
-                    "withCredentials": true
+                    "url" : "{{destinations.ds4}}/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryHeader?$filter=" + sFilterString + "&$format=json",
+                    "withCredentials": true,
+                    "parameters" : {
+                        "$expand" : "to_DeliveryDocumentItem,to_DeliveryDocumentPartner/to_Address"
+                    }
                 }).then(function(oData){
                     let results = oData.d.results;
                     console.log(results);
@@ -52,13 +55,15 @@ sap.ui.define([
                 })
             }
         };
+
+        CardExtension.prototype.getQuantityFormatter = function (val) {
+            return parseInt(val);
+        };
         
         CardExtension.prototype.getFormatters = function() {
             return {
-                deliveryStatus: this.deliveryStatus,
-                billingStatus: this.billingStatus,
-                overallStatus: this.overallStatus,
-                getData: this.getData
+                getData: this.getData,
+                getQuantityFormatter: this.getQuantityFormatter
             }
         };
     

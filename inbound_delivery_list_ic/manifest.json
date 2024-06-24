@@ -6,7 +6,7 @@
 		"title": "Inbound Deliveries List",
 		"subTitle": "Integration card for Inbound Deliveries List",
 		"applicationVersion": {
-			"version": "1.0.0"
+			"version": "1.0.1"
 		}
 	},
 	"sap.ui5" : {
@@ -109,7 +109,7 @@
 							{
 								"type" : "ShowCard",
 								"parameters": {
-									"manifest": "lineitemManifest.json",
+									"manifest": "lineItemManifest.json",
 									"data": {
 										"lineItemsData": {
 											"lineitems" : "{to_DeliveryDocumentItem/results}",
