@@ -1,0 +1,68 @@
+{
+	"sap.app": {
+		"id": "winnings.inbound_delivery_list_ic",
+		"type": "card",
+		"title": "Inbound delivery iine items",
+		"subTitle": "Integration card for inbound delivery line items",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+        "fullWidth" : false
+	},
+	"sap.card": {
+		"type": "Table",
+		"header": {
+			"icon": {
+				"src": "sap-icon://detail-view"
+			},
+			"data": {
+				"path": "lineItemsData>/"
+			},
+			"title": "Inbound delivery line items",
+			"subTitle": "line items for {lineItemsData>deliverydocument}"
+		},
+        "content": {
+            "data": {
+				"path": "lineItemsData>/lineitems"
+			},
+			"row": {
+				"columns": [
+					{
+						"title": "Material No",
+						"value": "{lineItemsData>Material}",
+						"identifier": true
+					},
+					{
+						"title": "Description",
+						"value": "{lineItemsData>DeliveryDocumentItemText}"
+					},
+                    {
+                        "title": "Quantity",
+						"value": "{lineItemsData>ActualDeliveryQuantity} {lineItemsData>DeliveryQuantityUnit}"
+                    },
+					{
+                        "title": "Storage Location",
+						"value": "{lineItemsData>StorageLocation}"
+                    }
+				]
+			}
+		},
+		"footer": {
+			"actionsStrip": [
+				{
+					"text": "Close",
+					"buttonType": "Emphasized",
+					"actions": [
+						{
+							"type": "HideCard"
+						}
+					]
+				}
+			]
+		}
+	}
+}

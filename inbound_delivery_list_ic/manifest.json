@@ -9,6 +9,15 @@
 			"version": "1.0.0"
 		}
 	},
+	"sap.ui5" : {
+		"resources" : {
+			"js" : [
+				{
+					"uri" : "libs/moment.js"
+				}
+			]
+		}
+	},
 	"sap.ui": {
 		"technology": "UI5",
         "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
@@ -19,100 +28,104 @@
 	"sap.card": {
 		"type": "Table",
         "designtime": "dt/configuration",
-		"data": {
-			"json": [{
-					"salesOrder": "5000010050",
-					"customerName": "Robert Brown Entertainment",
-					"netAmount": "2K USD",
-					"status": "Delivered",
-					"statusState": "Success"
-				},
-				{
-					"salesOrder": "5000010051",
-					"customerName": "Entertainment Argentinia",
-					"netAmount": "127k USD",
-					"status": "Canceled",
-					"statusState": "Error"
-				},
-				{
-					"salesOrder": "5000010052",
-					"customerName": "Brazil Technologies",
-					"netAmount": "8K USD",
-					"status": "In Progress",
-					"statusState": "Warning"
-				},
-				{
-					"salesOrder": "5000010053",
-					"customerName": "Quimica Madrilenos",
-					"netAmount": "25K USD",
-					"status": "Delivered",
-					"statusState": "Success"
-				},
-				{
-					"salesOrder": "5000010054",
-					"customerName": "Development Para O Governo",
-					"netAmount": "7K USD",
-					"status": "Delivered",
-					"statusState": "Success"
-				},
-				{
-					"salesOrder": "5000010050",
-					"customerName": "Robert Brown Entertainment",
-					"netAmount": "2K USD",
-					"status": "Delivered",
-					"statusState": "Success"
-				},
-				{
-					"salesOrder": "5000010051",
-					"customerName": "Entertainment Argentinia",
-					"netAmount": "127k USD",
-					"status": "Canceled",
-					"statusState": "Error"
-				},
-				{
-					"salesOrder": "5000010052",
-					"customerName": "Brazil Technologies",
-					"netAmount": "8K USD",
-					"status": "In Progress",
-					"statusState": "Warning"
-				},
-				{
-					"salesOrder": "5000010052",
-					"customerName": "Brazil Technologies",
-					"netAmount": "8K USD",
-					"status": "In Progress",
-					"statusState": "Warning"
+		"extension" : "ext/FormatterExtension",
+		"configuration": {
+			"destinations" : {
+				"ds4" : {
+					"name" : "ds4"
 				}
-			]
+			},
+			"filters": {
+				"dateperiod": {
+					"value" : "0",
+					"type": "Select",
+					"Label" : "Delivery period",
+					"item": {
+						"path": "/",
+						"template": {
+							"key": "{DatePeriod}",
+							"title": "{DatePeriodText}"
+						}
+					},
+					"data": {
+						"json": [
+							{
+								"DatePeriod" : "0",
+								"DatePeriodText" : "Past 7 Days"
+							},
+							{
+								"DatePeriod" : "1",
+								"DatePeriodText" : "Past 14 Days"
+							},
+							{
+								"DatePeriod" : "2",
+								"DatePeriodText" : "Past 30 Days"
+							}
+						]
+					}
+				}
+			}
+		},
+		"data": {
+			"extension": {
+				"method": "getData",
+				"args": [
+					"{filters>/dateperiod/selectedItem/key}"
+				]
+			},
+			"path" : "/"
 		},
 		"header": {
-			"title": "Sales Orders for Key Accounts",
-			"subTitle": "Today",
-			"status": {
-				"text": "{headerData/statusText}"
-			}
+			"title": "Inbound deliveries"
 		},
 		"content": {
 			"row": {
-				"columns": [{
-						"title": "Sales Order",
-						"value": "{salesOrder}",
+				"columns": [
+					{
+						"title": "Document ID",
+						"value": "{DeliveryDocument}",
 						"identifier": true
 					},
 					{
-						"title": "Customer",
-						"value": "{customerName}"
+						"title": "Delivery Date",
+						"value": "{DeliveryDateDisp}"
 					},
 					{
-						"title": "Net Amount",
-						"value": "{netAmount}"
+						"title": "Document Type",
+						"value": "{DeliveryDocumentType}"
 					},
 					{
-						"title": "Status",
-						"value": "{status}",
-						"state": "{statusState}"
+						"title": "Delivery Partner",
+						"value": "{to_DeliveryDocumentPartner/results/0/to_Address/BusinessPartnerName1}"
+					},
+					{
+						"title": "Shipping Point",
+						"value": "{ShippingPoint}"
+					},
+					{
+						"title" : "Line Items",
+						"value": "View Items",
+						"actions" : [
+							{
+								"type" : "ShowCard",
+								"parameters": {
+									"manifest": "lineitemManifest.json",
+									"data": {
+										"lineItemsData": {
+											"lineitems" : "{to_DeliveryDocumentItem/results}",
+											"deliverydocument" : "{DeliveryDocument}"
+										}
+									}
+								}
+							}
+						]
 					}
 				]
+			}
+		},
+		"footer": {
+			"paginator": {
+				"pageSize": 5
 			}
 		}
 	},
