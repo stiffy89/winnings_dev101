@@ -13,7 +13,10 @@ Content-Type: application/json
 X-CSRF-Token: fetch
 
 ###
-GET GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/$metadata
+GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryItem?$filter=StorageLocation eq '12AA'&$format=json
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryItem?$top=100
 
 ###
 GET http://ds4.dest/sap/opu/odata/sap/API_Product_srv/A_Product('241338')?$expand=to_Description&$format=json
@@ -21,3 +24,9 @@ GET http://ds4.dest/sap/opu/odata/sap/API_Product_srv/A_Product('241338')?$expan
 
 ###
 GET https://ds4.dest/sap/opu/odata/sap/API_INBOUND_DELIVERY_SRV;v=2/A_InbDeliveryItem(DeliveryDocument='180000001',DeliveryDocumentItem='000030')/to_DeliveryDocumentItemText
+
+
+###
+GET http://ds4.dest/sap/opu/odata/sap/API_OUTBOUND_DELIVERY_SRV;v=2/A_OutbDeliveryHeader?&$format=json
+Content-Type: application/json
+X-CSRF-Token: fetch

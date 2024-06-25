@@ -1,12 +1,19 @@
 {
 	"_version": "1.15.0",
 	"sap.app": {
-		"id": "winnings.inbound_delivery_list_ic",
+		"id": "winnings.outbound_delivery_list_ic",
 		"type": "card",
-		"title": "Inbound Deliveries List",
-		"subTitle": "Integration card for Inbound Deliveries List",
+		"title": "Outbound Delivery List",
+		"subTitle": "Outbound Delivery List Integration Card",
 		"applicationVersion": {
-			"version": "1.0.2"
+			"version": "1.0.3"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://table-view"
 		}
 	},
 	"sap.ui5" : {
@@ -16,13 +23,6 @@
 					"uri" : "libs/moment.js"
 				}
 			]
-		}
-	},
-	"sap.ui": {
-		"technology": "UI5",
-        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
-		"icons": {
-			"icon": "sap-icon://table-view"
 		}
 	},
 	"sap.card": {
@@ -76,7 +76,7 @@
 			"path" : "/"
 		},
 		"header": {
-			"title": "Inbound deliveries"
+			"title": "Outbound deliveries"
 		},
 		"content": {
 			"row": {

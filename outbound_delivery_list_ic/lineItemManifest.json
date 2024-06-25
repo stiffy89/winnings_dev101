@@ -1,11 +1,11 @@
 {
 	"sap.app": {
-		"id": "winnings.inbound_delivery_list_ic",
+		"id": "winnings.outbound_delivery_list_ic_dialog",
 		"type": "card",
-		"title": "Inbound delivery iine items",
-		"subTitle": "Integration card for inbound delivery line items",
+		"title": "Outbound delivery iine items",
+		"subTitle": "Integration card for outbound delivery line items",
 		"applicationVersion": {
-			"version": "1.0.2"
+			"version": "1.0.4"
 		}
 	},
 	"sap.ui": {
@@ -23,7 +23,7 @@
 			"data": {
 				"path": "lineItemsData>/"
 			},
-			"title": "Inbound delivery line items",
+			"title": "Outbound delivery line items",
 			"subTitle": "line items for {lineItemsData>deliverydocument}"
 		},
         "content": {
