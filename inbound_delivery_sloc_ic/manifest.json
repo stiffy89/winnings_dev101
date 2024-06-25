@@ -1,0 +1,102 @@
+{
+	"_version": "1.14.0",
+	"sap.app": {
+		"id": "winnings.inbound_delivery_sloc_ic",
+		"type": "card",
+		"title": "Inbound Deliveries Storage Column Card",
+		"subTitle": "",
+		"applicationVersion": {
+			"version": "1.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+        "deviceTypes": {"desktop": true, "phone": true, "tablet": true},
+		"icons": {
+			"icon": "sap-icon://full-stacked-column-chart"
+		}
+	},
+	"sap.ui5": {
+		"resources" : {
+			"js" : [
+				{
+					"uri" : "libs/moment.js"
+				}
+			]
+		}
+	},
+	"sap.card": {
+		"type": "Analytical",
+		"extension" : "ext/FormatterExtension",
+		"configuration" : {
+			"destinations" : {
+				"ds4" : {
+					"name" : "ds4"
+				}
+			},
+			"filters": {
+				"slocSearch": {
+					"type": "Search",
+					"label": "City",
+					"placeholder":"Storage location"
+				}
+			}
+		},
+        "designtime": "dt/configuration",
+		"header": {
+			"title": "Inbound Deliveries",
+			"subTitle": "Number of deliveries to a specific storage location over time"
+		},
+		"content": {
+			"chartType": "StackedColumn",
+			"legend": {
+				"visible": true,
+				"position": "Bottom",
+				"alignment": "TopLeft"
+			},
+			"plotArea": {
+				"dataLabel": {
+					"visible": false,
+					"showTotal": true
+				},
+				"categoryAxisText": {
+					"visible": false
+				},
+				"valueAxisText": {
+					"visible": false
+				}
+			},
+			"title": {
+				"text": "{title}",
+				"visible": true,
+				"alignment": "Left"
+			},
+			"measureAxis": "valueAxis",
+			"dimensionAxis": "categoryAxis",
+			"data": {
+				"extension": {
+					"method" : "getData",
+					"args" : [
+						"{filters>/slocSearch/value}"
+					]
+				},
+				"path": "/chart"
+			},
+			"dimensions": [
+				{
+					"label": "Period",
+					"value": "{Period}"
+				}
+			],
+			"measures": [
+				{
+					"label": "Items Delivered",
+					"value": "{Count}"
+				}
+			]
+		}
+	},
+    "sap.platform.mobilecards": {
+        "compatible": false
+    }
+}
